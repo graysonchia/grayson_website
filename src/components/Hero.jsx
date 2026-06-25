@@ -120,7 +120,7 @@ export default function Hero() {
           </AnimatePresence>
         </div>
         <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-5 text-center">
-          {['10+ Projects Built', '3.5 GPA', '5+ ML Models'].map((stat) => (
+          {['10+ Projects Built', '3.4 CGPA', 'Data + Software Focus'].map((stat) => (
             <div key={stat} className="rounded-lg bg-surface-2/70 p-3 text-sm font-bold text-text">
               {stat}
             </div>
