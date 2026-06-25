@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Download, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const links = ['Home', 'About', 'Projects', 'Skills', 'Education', 'Contact']
 const profilePhoto = '/logos/yang.jpg'
@@ -92,14 +92,6 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-5 lg:flex">{links.map(navLink)}</div>
 
-          <a
-            href="/resume.pdf"
-            download="Grayson_Chia_Resume.pdf"
-            className="focus-ring hidden items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-glow md:flex"
-          >
-            <Download size={16} /> Download CV
-          </a>
-
           <button
             type="button"
             aria-label="Toggle navigation"
@@ -127,13 +119,6 @@ export default function Navbar() {
                 </a>
               )
             })}
-            <a
-              href="/resume.pdf"
-              download="Grayson_Chia_Resume.pdf"
-              className="focus-ring mt-2 flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-sm font-bold text-white"
-            >
-              <Download size={16} /> Download CV
-            </a>
           </div>
         )}
       </header>

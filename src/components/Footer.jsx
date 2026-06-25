@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border py-8">
       <div className="section-shell flex flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
-        <p>© 2025 Grayson Chia. Built with React + Vite.</p>
+        <p>© 2026 Grayson Chia.</p>
         <div className="flex gap-4">
           <a
             className="focus-ring rounded-sm hover:text-text"
