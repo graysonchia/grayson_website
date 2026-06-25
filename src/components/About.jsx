@@ -19,14 +19,13 @@ export default function About() {
           <h2 className="section-title mt-3">About Me</h2>
           <div className="mt-6 space-y-5 text-base leading-8 text-muted">
             <p>
-              I&apos;m Grayson Chia, an ICT Software Engineering student at Asia Pacific University (APU), with a
-              strong interest in data analytics, software development, and turning raw data into meaningful insights.
+              As an ICT Software Engineering student at Asia Pacific University (APU), 
+              I&apos;m focused on building practical solutions that connect software development, data analytics, and clear decision-making.
             </p>
             <p>
-              I enjoy building projects that combine both technical development and analytics, from mobile apps and
-              web systems to dashboards, databases, data pipelines, and machine learning workflows. Through my academic
-              and personal projects, I have worked with tools such as Python, SQL, Power BI, FastAPI, React,
-              PostgreSQL, and Jupyter to solve practical problems and present data in a clear, useful way.
+              I enjoy working on projects that combine technical development and analytics — from mobile apps and web systems to dashboards, databases, data pipelines, and machine learning workflows. 
+              Through my academic and personal projects, 
+              I have used tools such as Python, SQL, Power BI, FastAPI, React, PostgreSQL, and Jupyter to solve practical problems and present data in a clear, useful way.
             </p>
             <p>
               Beyond analytics, I also have experience in full-stack development, UI/UX design, low-code systems, and

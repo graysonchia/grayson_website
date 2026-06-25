@@ -1,5 +1,53 @@
 export const projects = [
   {
+    id: 'mediops',
+    title: 'MediOps',
+    emoji: 'MO',
+    tagline: 'Real-Time Hospital Operations Analytics',
+    tags: ['FastAPI', 'React', 'PostgreSQL', 'Celery', 'Redis', 'WebSockets', 'scikit-learn'],
+    category: 'Healthcare Analytics - Operations Intelligence',
+    summary:
+      'A real-time hospital operations command dashboard for Malaysian healthcare networks, combining live telemetry, anomaly alerts, ML predictions, and interactive analytics.',
+    problem:
+      'Hospital operations teams need fast visibility into bed occupancy, ER wait times, staffing, equipment uptime, and unresolved anomalies across multiple facilities.',
+    dataset:
+      'Synthetic operational data for five Malaysian hospitals, including departments, bed occupancy readings, staff records, equipment readings, patient records, and anomaly alerts.',
+    tools: [
+      'FastAPI',
+      'SQLAlchemy',
+      'PostgreSQL',
+      'Redis',
+      'Celery',
+      'pandas',
+      'scikit-learn',
+      'React',
+      'TanStack Query',
+      'Recharts',
+    ],
+    methodology: [
+      'Designed a multi-hospital operational data model with seeded healthcare network data',
+      'Built async FastAPI endpoints for beds, staff, equipment, patients, predictions, anomalies, and analytics',
+      'Added Redis Pub/Sub and WebSockets for live anomaly events',
+      'Used Celery workers and Celery Beat for data simulation, anomaly checks, and model retraining',
+      'Trained Random Forest and Gradient Boosting models for length-of-stay and ER wait predictions',
+      'Applied Isolation Forest for operational anomaly detection and KMeans for shift clustering',
+      'Built a React dashboard with live ops, patient flow, predictions, anomalies, and shift analytics views',
+    ],
+    insights: [
+      'Tracks five Malaysian hospitals with department capacity, occupancy, staffing, and equipment indicators',
+      'Generates confidence-bounded predictions for length of stay and ER wait time',
+      'Surfaces unresolved operational alerts with severity classification and resolution workflows',
+      'Clusters shifts to compare operational patterns and hospital efficiency',
+    ],
+    outcome:
+      'A production-style healthcare analytics system demonstrating real-time data pipelines, background processing, ML services, and clinical operations dashboards.',
+    skills: ['Healthcare analytics', 'Real-time dashboards', 'WebSockets', 'Background workers', 'Predictive modelling'],
+    learned:
+      'This project strengthened my ability to connect operational metrics, live system design, and machine-learning outputs into a dashboard users can act on quickly.',
+    github: 'https://github.com/graysonchia/MediOps',
+    demo: '',
+  },
+  {
     id: 'transitpulse',
     title: 'TransitPulse',
     emoji: 'TP',

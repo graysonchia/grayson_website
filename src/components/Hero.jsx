@@ -50,8 +50,8 @@ export default function Hero() {
           Turning messy data <span className="text-accent-glow">into clear decisions.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-          I&apos;m Grayson, an ICT student at APU who builds full-stack analytics systems, trains ML models, and turns
-          real-world datasets into insights that actually matter.
+          I&apos;m Grayson, an ICT Software Engineering student at APU who builds data-driven applications, 
+          dashboards, and analytics workflows that turn raw information into clear, practical insights.
         </p>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
           <a

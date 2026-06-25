@@ -37,8 +37,8 @@ export default function Projects() {
           <h2 className="section-title mt-3">Featured Projects</h2>
         </motion.div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
-          <label className="focus-within:border-accent focus-within:shadow-[0_0_22px_rgba(99,102,241,0.18)] flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 transition">
+        <div className="mt-8 flex flex-col gap-4">
+          <label className="focus-within:border-accent focus-within:shadow-[0_0_22px_rgba(99,102,241,0.18)] flex w-full max-w-3xl items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 transition">
             <Search className="shrink-0 text-muted" size={18} />
             <span className="sr-only">Search projects</span>
             <input
@@ -49,7 +49,7 @@ export default function Projects() {
             />
           </label>
 
-          <div className="flex flex-wrap gap-2 lg:max-w-xl lg:justify-end">
+          <div className="flex max-w-5xl flex-wrap gap-2">
             {filters.map((filter) => (
               <button
                 key={filter}
