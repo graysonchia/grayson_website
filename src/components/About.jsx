@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion'
-import { BarChart3, Briefcase, Code2, GraduationCap, MapPin, University } from 'lucide-react'
+import { BarChart3, Briefcase, Code2, GraduationCap, University } from 'lucide-react'
 
 const stats = [
-  [GraduationCap, 'APU - Diploma in ICT (Software Engineering)'],
-  [MapPin, 'Kuala Lumpur, Malaysia'],
-  [BarChart3, 'CGPA: 3.4 / 4.0'],
+  [GraduationCap, 'ICT Software Engineering Student'],
   [University, 'APU Data Analytics Society Member'],
-  [Briefcase, 'Open to: Internships & Entry-Level Roles'],
-  [Code2, 'github.com/graysonchia'],
+  [BarChart3, 'Data Analytics + Software Engineering Focus'],
+  [Briefcase, 'Open to Internship / Entry-Level Roles'],
 ]
 
 export default function About() {
@@ -39,20 +37,25 @@ export default function About() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="card p-6"
-        >
-          <h3 className="font-display text-xl font-bold">Quick Stats</h3>
-          <div className="mt-6 grid gap-4">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="grid gap-4 sm:grid-cols-2">
             {stats.map(([Icon, text]) => (
-              <div key={text} className="flex items-start gap-3 rounded-lg bg-surface-2/60 p-4 text-muted">
-                <Icon className="mt-0.5 shrink-0 text-accent-glow" size={20} />
-                <span>{text}</span>
+              <div key={text} className="card p-5">
+                <Icon className="text-accent-glow" size={24} />
+                <p className="mt-5 font-display text-lg font-bold leading-7">{text}</p>
               </div>
             ))}
+          </div>
+          <div className="card mt-5 p-5">
+            <div className="flex items-start gap-3">
+              <Code2 className="mt-1 shrink-0 text-accent-glow" size={22} />
+              <div>
+                <h3 className="font-display text-lg font-bold">Practical builder mindset</h3>
+                <p className="mt-2 leading-7 text-muted">
+                  I like turning coursework and personal ideas into working systems with databases, APIs, analytics, and dashboards.
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

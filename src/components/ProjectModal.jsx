@@ -39,7 +39,12 @@ export default function ProjectModal({ project, onClose }) {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="font-mono text-sm font-bold text-green">{project.category}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-xs font-bold text-accent-glow">
+                    {project.domain}
+                  </span>
+                  <span className="font-mono text-xs font-bold uppercase text-muted">{project.category}</span>
+                </div>
                 <h2 className="mt-2 font-display text-3xl font-bold">{project.title}</h2>
                 <p className="mt-2 text-accent-glow">{project.tagline}</p>
               </div>
