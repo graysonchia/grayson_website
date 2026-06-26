@@ -448,34 +448,52 @@ export const projects = [
     title: 'CineIntel',
     domain: 'Business Analytics',
     emoji: 'CI',
-    image: '',
+    image: '/projects/cineintel/movie.jpeg',
     imageAlt: 'CineIntel movie analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/cineintel/movie.jpeg',
+        alt: 'CineIntel movie discovery dashboard',
+        title: 'Movie Discovery',
+        description:
+          'Browseable movie intelligence interface with genre filters, community ratings, sentiment-aware reviews, and recommendation-oriented browsing.',
+      },
+      {
+        src: '/projects/cineintel/classifier.jpeg',
+        alt: 'CineIntel poster classifier screen',
+        title: 'Poster Classifier',
+        description:
+          'Computer-vision workflow for submitting a movie poster URL and classifying poster content against movie metadata.',
+      },
+    ],
     tagline: 'Movie Intelligence & Audience Analytics',
-    tags: ['Python', 'Data Analytics', 'Visualization', 'Dashboard', 'Machine Learning'],
+    tags: ['Python', 'FastAPI', 'React', 'Computer Vision', 'Recommendation Systems'],
     category: 'Entertainment Analytics - Movie Intelligence',
     summary:
-      'A movie analytics project focused on exploring film performance, audience trends, and data-driven entertainment insights.',
+      'A movie intelligence platform that combines film discovery, audience rating signals, sentiment-aware review context, and a poster classification workflow.',
     problem:
-      'Movie data contains useful signals about audience preference, revenue patterns, and genre performance, but those signals are difficult to compare without structured analytics.',
+      'Movie discovery depends on many scattered signals, including genres, ratings, reviews, poster content, and user taste. Without a structured interface, those signals are hard to compare quickly.',
     dataset:
-      'Movie and entertainment data prepared for exploratory analysis, trend comparison, and dashboard-style reporting.',
-    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+      'Curated movie metadata with titles, genres, release years, poster references, audience rating signals, and review-oriented features prepared for browsing and classification.',
+    tools: ['FastAPI', 'React', 'Python', 'pandas', 'scikit-learn', 'Computer Vision', 'Recommendation Logic'],
     methodology: [
-      'Prepared movie records for analysis and comparison',
-      'Explored relationships between genres, ratings, popularity, and performance indicators',
-      'Built visual summaries to make entertainment trends easier to interpret',
-      'Organized findings into a project format suitable for portfolio review',
+      'Structured movie metadata for genre filtering, rating comparison, and recommendation-friendly browsing',
+      'Designed a React interface for scanning movies by genre, title, release year, rating, and poster artwork',
+      'Prepared a classifier workflow that accepts movie identifiers and poster image URLs',
+      'Connected content-based movie signals with a lightweight intelligence layer for discovery and review context',
+      'Built a dark, media-focused UI with persistent navigation between movie browsing and classifier tools',
     ],
     insights: [
-      'Highlights patterns across movie categories and audience response',
-      'Supports comparison between performance indicators',
-      'Turns raw entertainment data into clearer analytical findings',
+      'Genre filters make audience preference patterns easier to scan across the catalogue',
+      'Poster imagery adds a visual signal that complements title, year, genre, and rating metadata',
+      'The classifier screen separates model experimentation from the main discovery workflow',
+      'Movie cards turn entertainment metadata into a faster browsing and comparison experience',
     ],
     outcome:
-      'A portfolio analytics project showing how Python-based analysis can turn entertainment data into practical insight.',
-    skills: ['Exploratory data analysis', 'Visualization', 'Storytelling with data', 'Feature analysis'],
+      'A portfolio-ready entertainment intelligence app demonstrating metadata preparation, recommendation-oriented product design, and computer-vision workflow integration.',
+    skills: ['Entertainment analytics', 'Recommendation UX', 'Computer vision workflow', 'Metadata modelling', 'Full-stack development'],
     learned:
-      'This project strengthened my ability to frame consumer data as a set of clear questions and visual findings.',
+      'This project strengthened my ability to turn consumer media data into a product experience where discovery, model input, and visual context support each other.',
     github: 'https://github.com/graysonchia/CineIntel',
     demo: '',
   },
