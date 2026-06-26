@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Activity, BarChart3 } from 'lucide-react'
 
 export default function ProjectPreview({ project, className = '', compact = false }) {
@@ -7,9 +7,13 @@ export default function ProjectPreview({ project, className = '', compact = fals
   const showImage = Boolean(project.image) && !mediaFailed && !showVideo
   const initials = project.emoji || getProjectInitials(project.title)
 
+  useEffect(() => {
+    setMediaFailed(false)
+  }, [project.image, project.previewVideo])
+
   return (
     <div className={`group/preview overflow-hidden rounded-lg border border-border bg-bg/50 ${className}`}>
-      <div className="relative aspect-[16/10] w-full">
+      <div className="relative aspect-video w-full">
         {showVideo ? (
           <video
             src={project.previewVideo}

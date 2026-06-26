@@ -1,14 +1,40 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Code2, ExternalLink, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Code2, ExternalLink, Maximize2, X } from 'lucide-react'
 
 const sections = ['problem', 'dataset', 'outcome', 'learned']
 
 export default function ProjectModal({ project, onClose }) {
+  const [lightboxIndex, setLightboxIndex] = useState(null)
+  const gallery = project?.gallery ?? []
+  const hasGallery = gallery.length > 0
+  const activeScreenshot = lightboxIndex === null ? null : gallery[lightboxIndex]
+
+  useEffect(() => {
+    setLightboxIndex(null)
+  }, [project?.id])
+
   useEffect(() => {
     if (!project) return undefined
 
-    const onKey = (event) => event.key === 'Escape' && onClose()
+    const onKey = (event) => {
+      if (event.key === 'Escape') {
+        if (lightboxIndex !== null) {
+          setLightboxIndex(null)
+          return
+        }
+
+        onClose()
+      }
+
+      if (lightboxIndex !== null && gallery.length > 1 && event.key === 'ArrowLeft') {
+        setLightboxIndex((index) => (index === 0 ? gallery.length - 1 : index - 1))
+      }
+
+      if (lightboxIndex !== null && gallery.length > 1 && event.key === 'ArrowRight') {
+        setLightboxIndex((index) => (index === gallery.length - 1 ? 0 : index + 1))
+      }
+    }
     const originalOverflow = document.body.style.overflow
 
     window.addEventListener('keydown', onKey)
@@ -18,7 +44,15 @@ export default function ProjectModal({ project, onClose }) {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = originalOverflow
     }
-  }, [project, onClose])
+  }, [gallery.length, lightboxIndex, project, onClose])
+
+  const showPreviousScreenshot = () => {
+    setLightboxIndex((index) => (index === 0 ? gallery.length - 1 : index - 1))
+  }
+
+  const showNextScreenshot = () => {
+    setLightboxIndex((index) => (index === gallery.length - 1 ? 0 : index + 1))
+  }
 
   return (
     <AnimatePresence>
@@ -90,6 +124,46 @@ export default function ProjectModal({ project, onClose }) {
                 </span>
               ))}
             </div>
+
+            {hasGallery && (
+              <section className="mt-10">
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p className="font-mono text-xs font-bold uppercase text-accent-glow">Project Screenshots</p>
+                    <h3 className="mt-2 font-display text-2xl font-bold">Dashboard Gallery</h3>
+                  </div>
+                  <p className="text-sm font-semibold text-muted">{gallery.length} screenshots</p>
+                </div>
+
+                <div className="mt-5 grid gap-5 md:grid-cols-2">
+                  {gallery.map((item, index) => (
+                    <button
+                      key={item.src}
+                      type="button"
+                      onClick={() => setLightboxIndex(index)}
+                      className="focus-ring group overflow-hidden rounded-xl border border-border bg-bg/40 text-left transition hover:border-accent/70 hover:shadow-[0_0_28px_rgba(99,102,241,0.18)]"
+                    >
+                      <span className="relative block aspect-[16/10] w-full bg-surface-2">
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="h-full w-full object-contain p-2 transition duration-500 group-hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                        <span className="absolute right-3 top-3 inline-flex rounded-lg border border-white/10 bg-bg/80 p-2 text-text opacity-0 shadow-lg transition group-hover:opacity-100">
+                          <Maximize2 size={16} />
+                        </span>
+                      </span>
+                      <span className="block p-4">
+                        <span className="font-display text-lg font-bold">{item.title}</span>
+                        <span className="mt-2 block text-sm leading-6 text-muted">{item.description}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
+
             <div className="mt-8 flex flex-wrap gap-3">
               {project.github && (
                 <a
@@ -113,6 +187,77 @@ export default function ProjectModal({ project, onClose }) {
               )}
             </div>
           </motion.article>
+
+          <AnimatePresence>
+            {activeScreenshot && (
+              <motion.div
+                className="fixed inset-0 z-[70] flex items-center justify-center bg-black/88 p-4 backdrop-blur-md md:p-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onMouseDown={(event) => {
+                  event.stopPropagation()
+                  setLightboxIndex(null)
+                }}
+              >
+                <motion.div
+                  className="flex max-h-full w-full max-w-7xl flex-col"
+                  initial={{ scale: 0.96, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.96, opacity: 0 }}
+                  onMouseDown={(event) => event.stopPropagation()}
+                >
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-mono text-xs font-bold text-accent-glow">
+                        {lightboxIndex + 1} / {gallery.length}
+                      </p>
+                      <h3 className="mt-1 font-display text-xl font-bold">{activeScreenshot.title}</h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex(null)}
+                      aria-label="Close screenshot lightbox"
+                      className="focus-ring rounded-lg border border-white/10 bg-surface p-2 text-text transition hover:border-accent/70"
+                    >
+                      <X />
+                    </button>
+                  </div>
+
+                  <div className="relative min-h-0 overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl">
+                    <img
+                      src={activeScreenshot.src}
+                      alt={activeScreenshot.alt}
+                      className="max-h-[74vh] w-full object-contain"
+                    />
+
+                    {gallery.length > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={showPreviousScreenshot}
+                          aria-label="Previous screenshot"
+                          className="focus-ring absolute left-3 top-1/2 rounded-full border border-white/10 bg-bg/85 p-3 text-text shadow-lg transition hover:border-accent/70"
+                        >
+                          <ChevronLeft />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={showNextScreenshot}
+                          aria-label="Next screenshot"
+                          className="focus-ring absolute right-3 top-1/2 rounded-full border border-white/10 bg-bg/85 p-3 text-text shadow-lg transition hover:border-accent/70"
+                        >
+                          <ChevronRight />
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">{activeScreenshot.description}</p>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>
