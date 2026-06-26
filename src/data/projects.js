@@ -538,8 +538,24 @@ export const projects = [
     title: 'SentimentPulse MY',
     domain: 'Business Analytics',
     emoji: 'SP',
-    image: '',
+    image: '/projects/sentimental/senti_dashboard.jpeg',
     imageAlt: 'SentimentPulse MY sentiment analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/sentimental/senti_dashboard.jpeg',
+        alt: 'SentimentPulse MY sentiment analytics dashboard overview',
+        title: 'Sentiment Overview',
+        description:
+          'Dashboard view summarising sentiment distribution, review volume, keyword patterns, and high-level text analytics indicators.',
+      },
+      {
+        src: '/projects/sentimental/senti_dashboard2.jpeg',
+        alt: 'SentimentPulse MY detailed sentiment analytics dashboard',
+        title: 'Detailed Sentiment Analysis',
+        description:
+          'Extended analysis view for comparing sentiment groups, reviewing text signals, and identifying themes across feedback records.',
+      },
+    ],
     tagline: 'Malaysian Sentiment Analytics',
     tags: ['Python', 'NLP', 'Sentiment Analysis', 'Text Analytics', 'Dashboard'],
     category: 'Text Analytics - Sentiment Analysis',
