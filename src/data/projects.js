@@ -135,7 +135,7 @@ export const projects = [
       },
     ],
     tagline: 'Klang Valley Public Transport Analytics',
-    tags: ['Python', 'FastAPI', 'React', 'IsolationForest', 'GTFS Data', 'PostgreSQL'],
+    tags: ['Python', 'PostgreSQL', 'Streamlit', 'Prophet', 'Plotly', 'Jupyter'],
     category: 'Data Analytics - Anomaly Detection',
     summary:
       'A full-stack analytics platform that ingests real GTFS data from api.data.gov.my to detect route anomalies, visualize transit patterns, and surface operational insights for the Klang Valley public transport network.',
@@ -143,15 +143,14 @@ export const projects = [
       'Public transit data in Malaysia is available but rarely analyzed in a meaningful way. Without anomaly detection or pattern analysis, service disruptions and underperforming routes can go unnoticed.',
     dataset:
       'Real GTFS feed from api.data.gov.my, including stops, routes, trips, stop times, and calendar data. Over 800,000 records processed.',
-    tools: ['pandas', 'numpy', 'scikit-learn', 'FastAPI', 'PostgreSQL', 'React', 'Recharts'],
+    tools: ['Python', 'PostgreSQL', 'Streamlit', 'Prophet', 'Plotly', 'Jupyter'],
     methodology: [
-      'Ingested and parsed GTFS feed data from the Malaysian open data portal',
-      'Cleaned and normalized multi-table transit data',
-      'Applied IsolationForest to flag anomalous routes',
-      'Built RandomForest classifier for route performance categories',
-      'Used K-Means to cluster stops by usage patterns and density',
-      'Developed FastAPI backend with async PostgreSQL queries',
-      'Built React dashboard with interactive maps and anomaly alerts',
+      'Built a Python ETL pipeline using Malaysia GTFS API data',
+      'Modelled a PostgreSQL star schema for OLAP-style ridership analysis',
+      'Generated and analysed 500K+ synthetic ridership fact records',
+      'Used Prophet to forecast 90-day ridership trends',
+      'Built a Streamlit and Plotly dashboard with heatmaps, stop maps, trend lines, and filters',
+      'Validated findings in Jupyter notebooks with peak-hour demand and route performance analysis',
     ],
     insights: [
       'Identified 23 routes with statistically anomalous departure patterns',
@@ -208,7 +207,7 @@ export const projects = [
       },
     ],
     tagline: 'Malaysian E-Commerce Price Intelligence Platform',
-    tags: ['Python', 'FastAPI', 'React', 'GradientBoosting', 'IsolationForest', 'APScheduler'],
+    tags: ['Python', 'APScheduler', 'PostgreSQL', 'Faker', 'Jupyter', 'Power BI'],
     category: 'Data Analytics - Price Forecasting',
     summary:
       'A price tracking platform for Malaysian e-commerce that monitors product prices, detects anomalous price changes, segments products, and forecasts future prices.',
@@ -216,13 +215,14 @@ export const projects = [
       'Malaysian shoppers and small retailers need a systematic way to track price trends, detect suspicious spikes, and forecast upcoming price movements.',
     dataset:
       'Scraped and synthetic e-commerce price data with 12,500+ records across product categories and time periods.',
-    tools: ['pandas', 'scikit-learn', 'FastAPI', 'PostgreSQL', 'APScheduler', 'React', 'Recharts'],
+    tools: ['Python', 'APScheduler', 'PostgreSQL', 'Faker', 'Jupyter', 'Power BI'],
     methodology: [
-      'Built APScheduler pipeline to collect and store product prices',
-      'Applied IsolationForest to detect price spikes',
-      'Used K-Means to segment products into pricing tiers',
-      'Trained GradientBoostingRegressor for 7-day price forecasts',
-      'Developed an ML insights dashboard with anomaly timelines and forecast charts',
+      'Built APScheduler jobs for recurring synthetic price updates',
+      'Generated 200+ Faker products across six e-commerce categories',
+      'Modelled flash sale probability and category-level price volatility',
+      'Created deal detection scoring using 30-day high benchmarking',
+      'Exposed FastAPI endpoints for products, deals, categories, dashboards, and manual scrape triggers',
+      'Connected Power BI to PostgreSQL for price trend reporting',
     ],
     insights: [
       '156 anomalous price events detected around festive and sale periods',
@@ -272,7 +272,7 @@ export const projects = [
       },
     ],
     tagline: 'Habit & Mood Analytics Platform',
-    tags: ['Python', 'FastAPI', 'Expo React Native', 'K-Means', 'Logistic Regression'],
+    tags: ['Python', 'PostgreSQL', 'Jupyter', 'Power BI', 'React Native (Expo)'],
     category: 'Behavioural Analytics - ML Classification',
     summary:
       'A mobile-first habit and mood tracker with an analytics engine that clusters users by behaviour and predicts habit dropout risk.',
@@ -280,13 +280,14 @@ export const projects = [
       'Most habit tracking apps show what users did, but not why they are likely to quit. HabitFlow turns raw logs into behavioural insight.',
     dataset:
       'Synthetic habit logs and mood entries for 500 simulated users over a 90-day horizon.',
-    tools: ['pandas', 'scikit-learn', 'FastAPI', 'PostgreSQL', 'Expo React Native', 'Recharts'],
+    tools: ['Python', 'PostgreSQL', 'Jupyter', 'Power BI', 'React Native (Expo)'],
     methodology: [
-      'Designed schema for habits, mood logs, and streaks',
-      'Extracted behavioural features such as streak length and completion rate',
-      'Applied K-Means to cluster users by engagement style',
-      'Trained Logistic Regression to predict 30-day dropout risk',
-      'Built analytics endpoints and a mobile insights screen',
+      'Built an async FastAPI backend with JWT authentication',
+      'Designed 4 normalized PostgreSQL tables with Alembic migrations',
+      'Seeded 500+ users with habits, check-ins, and streak records',
+      'Created Jupyter analytics covering EDA, cohort retention, mood correlation, churn prediction, and K-Means segmentation',
+      'Connected Power BI to PostgreSQL with auto-detected relationships',
+      'Built a React Native (Expo) frontend with secure credential storage',
     ],
     insights: [
       '4 user clusters identified: Consistent Achievers, Weekend Warriors, Mood-Driven Users, and At-Risk Disengaged',
@@ -348,7 +349,7 @@ export const projects = [
       },
     ],
     tagline: 'Fitness Tracking with ML-Powered Insights',
-    tags: ['Python', 'FastAPI', 'React', 'RandomForest', 'K-Means', 'Linear Regression'],
+    tags: ['Python', 'PostgreSQL', 'React (Vite)', 'React Native (Expo)', 'Recharts', 'Jupyter'],
     category: 'Health Analytics - Predictive Modelling',
     summary:
       'A 12-table fitness tracking platform with a web dashboard and ML layer for churn prediction, fitness clustering, and performance forecasting.',
@@ -356,13 +357,14 @@ export const projects = [
       'Fitness apps generate large volumes of data but rarely help users understand progress or identify disengagement risk.',
     dataset:
       'Synthetic fitness data across 12 relational tables, including workouts, sets, reps, body metrics, goals, streaks, and profiles.',
-    tools: ['pandas', 'scikit-learn', 'FastAPI', 'PostgreSQL', 'React', 'Expo React Native', 'Recharts'],
+    tools: ['Python', 'PostgreSQL', 'React (Vite)', 'React Native (Expo)', 'Recharts', 'Jupyter'],
     methodology: [
-      'Designed and seeded a 12-table PostgreSQL schema',
-      'Trained RandomForest classifier to predict 30-day churn',
-      'Applied K-Means to segment users into fitness archetypes',
-      'Built Linear Regression forecasting for PR trajectories',
-      'Created React insights page with risk scores and forecast charts',
+      'Built a FastAPI async backend with PostgreSQL optimized for analytics',
+      'Managed schema evolution with Alembic migrations',
+      'Created a React Vite dashboard with Tailwind CSS and Recharts',
+      'Built workout trend, PR leaderboard, and retention heatmap views',
+      'Developed a React Native (Expo) mobile client with SecureStore credential management',
+      'Used Jupyter notebooks for workout progression, macro tracking, body composition, and churn analysis',
     ],
     insights: [
       'Churn model achieved 87% accuracy',
@@ -820,31 +822,70 @@ export const projects = [
     title: 'CreditIQ',
     domain: 'Finance',
     emoji: 'CQ',
-    image: '',
+    image: '/projects/creditiq/credit dashboard.jpeg',
     imageAlt: 'CreditIQ credit risk analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/creditiq/credit dashboard.jpeg',
+        alt: 'CreditIQ credit risk dashboard overview',
+        title: 'Risk Dashboard',
+        description:
+          'Portfolio-level credit analytics view with borrower risk indicators, loan exposure, and financial health signals.',
+      },
+      {
+        src: '/projects/creditiq/credit score.jpeg',
+        alt: 'CreditIQ borrower credit score analysis dashboard',
+        title: 'Credit Scoring',
+        description:
+          'Borrower scoring analysis that turns application variables into clearer creditworthiness and risk segment signals.',
+      },
+      {
+        src: '/projects/creditiq/loan.jpeg',
+        alt: 'CreditIQ loan analysis dashboard',
+        title: 'Loan Analytics',
+        description:
+          'Loan portfolio view for comparing approvals, repayment patterns, exposure, and borrower-level lending context.',
+      },
+      {
+        src: '/projects/creditiq/fraud.jpeg',
+        alt: 'CreditIQ fraud detection analytics dashboard',
+        title: 'Fraud Signals',
+        description:
+          'Fraud-oriented analytics view for suspicious borrower patterns, unusual applications, and risk review queues.',
+      },
+      {
+        src: '/projects/creditiq/model.jpeg',
+        alt: 'CreditIQ machine learning model performance dashboard',
+        title: 'Model Performance',
+        description:
+          'Model evaluation dashboard for classification quality, risk prediction output, and practical credit decision support.',
+      },
+    ],
     tagline: 'Credit Risk Analytics',
-    tags: ['Python', 'Risk Analytics', 'Classification', 'Machine Learning', 'Finance'],
+    tags: ['Python', 'Risk Analytics', 'Credit Scoring', 'Fraud Detection', 'Machine Learning'],
     category: 'Finance Analytics - Credit Risk',
     summary:
-      'A credit risk analytics project that explores borrower risk indicators and machine-learning-driven classification workflows.',
+      'A credit risk analytics project that explores borrower risk indicators, loan behaviour, fraud signals, and machine-learning-driven classification workflows.',
     problem:
       'Credit decisions require clear risk signals, but borrower data needs careful preparation before patterns and risk groups can be trusted.',
     dataset:
       'Credit and borrower-style records prepared for risk analysis, classification, and reporting.',
-    tools: ['Python', 'pandas', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
     methodology: [
       'Prepared borrower and credit-style records for modelling',
       'Explored risk indicators and feature relationships',
-      'Built classification-oriented analysis for credit risk groups',
+      'Built classification-oriented analysis for credit risk groups and score bands',
+      'Analysed loan and fraud-related signals for financial risk review',
       'Summarised outputs in a finance analytics format',
     ],
     insights: [
       'Identifies variables linked to credit risk patterns',
       'Supports segmentation of risk groups',
+      'Highlights fraud and loan behaviour signals for review',
       'Shows practical application of classification workflows',
     ],
     outcome:
-      'A finance analytics project demonstrating risk-focused feature analysis and machine-learning preparation.',
+      'A finance analytics project demonstrating risk-focused feature analysis, credit scoring, fraud review, and machine-learning preparation.',
     skills: ['Credit risk', 'Classification', 'Feature engineering', 'Finance analytics'],
     learned:
       'This project sharpened my ability to connect model features with financial risk interpretation.',
@@ -856,13 +897,57 @@ export const projects = [
     title: 'Financial Risk Analytics',
     domain: 'Finance',
     emoji: 'FR',
-    image: '',
+    image: '/projects/financial_risk_analytics/fin dashboard.jpeg',
     imageAlt: 'Financial Risk Analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/financial_risk_analytics/fin dashboard.jpeg',
+        alt: 'Financial Risk Analytics dashboard overview',
+        title: 'Risk Dashboard',
+        description:
+          'Portfolio overview for financial risk exposure, key indicators, account health, and operational reporting signals.',
+      },
+      {
+        src: '/projects/financial_risk_analytics/fin analytics.jpeg',
+        alt: 'Financial Risk Analytics analytical insights dashboard',
+        title: 'Risk Analytics',
+        description:
+          'Analytical view for comparing financial risk measures, trends, and business-facing reporting summaries.',
+      },
+      {
+        src: '/projects/financial_risk_analytics/fin customers.jpeg',
+        alt: 'Financial Risk Analytics customer risk dashboard',
+        title: 'Customer Risk',
+        description:
+          'Customer-level risk view for segmentation, profile review, and comparison of account behaviour indicators.',
+      },
+      {
+        src: '/projects/financial_risk_analytics/fin loans.jpeg',
+        alt: 'Financial Risk Analytics loan portfolio dashboard',
+        title: 'Loan Portfolio',
+        description:
+          'Loan-focused reporting for exposure, repayment context, risk grouping, and portfolio-level financial review.',
+      },
+      {
+        src: '/projects/financial_risk_analytics/fin transaction.jpeg',
+        alt: 'Financial Risk Analytics transaction monitoring dashboard',
+        title: 'Transactions',
+        description:
+          'Transaction monitoring view for financial activity patterns, value movement, and risk-relevant behaviour.',
+      },
+      {
+        src: '/projects/financial_risk_analytics/fin fraud.jpeg',
+        alt: 'Financial Risk Analytics fraud monitoring dashboard',
+        title: 'Fraud Monitoring',
+        description:
+          'Fraud-oriented reporting view for suspicious activity, abnormal patterns, and review-ready risk signals.',
+      },
+    ],
     tagline: 'Financial Risk Reporting & Analysis',
-    tags: ['Python', 'Finance Analytics', 'Risk Analysis', 'Dashboard', 'Visualization'],
+    tags: ['Python', 'Finance Analytics', 'Risk Reporting', 'Fraud Monitoring', 'Dashboard'],
     category: 'Finance Analytics - Risk Reporting',
     summary:
-      'A financial risk analytics project focused on preparing, analysing, and visualising risk indicators for clearer financial reporting.',
+      'A financial risk analytics project focused on preparing, analysing, and visualising portfolio, customer, loan, transaction, and fraud indicators for clearer financial reporting.',
     problem:
       'Financial risk data can be difficult to interpret when it is not organised into clear measures, comparisons, and visual summaries.',
     dataset:
@@ -871,17 +956,18 @@ export const projects = [
     methodology: [
       'Cleaned and prepared financial records for analysis',
       'Calculated risk-oriented indicators',
-      'Compared financial patterns through visual summaries',
+      'Compared customer, loan, transaction, and fraud patterns through visual summaries',
       'Presented findings in a structured reporting format',
     ],
     insights: [
       'Highlights financial risk patterns and comparison points',
+      'Connects customer, loan, transaction, and fraud views into one reporting workflow',
       'Supports clearer communication of risk indicators',
       'Demonstrates structured finance data analysis',
     ],
     outcome:
-      'A finance-focused analytics project showing how raw financial data can be converted into clearer risk reporting.',
-    skills: ['Financial analysis', 'Risk reporting', 'Data cleaning', 'Visualization'],
+      'A finance-focused analytics project showing how raw financial data can be converted into clearer portfolio risk reporting and review workflows.',
+    skills: ['Financial analysis', 'Risk reporting', 'Fraud monitoring', 'Data cleaning', 'Visualization'],
     learned:
       'This project strengthened my ability to organise risk measures into a format that supports decision-making.',
     github: 'https://github.com/graysonchia/Financial-Risk-Analytics',
@@ -892,13 +978,57 @@ export const projects = [
     title: 'Safety Environmental Risk Analytics',
     domain: 'Security & Risk',
     emoji: 'SE',
-    image: '',
+    image: '/projects/safety/safe dashboard.jpeg',
     imageAlt: 'Safety Environmental Risk Analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/safety/safe dashboard.jpeg',
+        alt: 'Safety Environmental Risk Analytics dashboard overview',
+        title: 'Risk Dashboard',
+        description:
+          'Operational overview for safety, environmental, compliance, incident, and alert indicators across the risk workflow.',
+      },
+      {
+        src: '/projects/safety/safe incidents.jpeg',
+        alt: 'Safety Environmental Risk Analytics incident tracking dashboard',
+        title: 'Incident Tracking',
+        description:
+          'Incident review view for comparing event patterns, severity, reporting status, and operational safety signals.',
+      },
+      {
+        src: '/projects/safety/safe alerts.jpeg',
+        alt: 'Safety Environmental Risk Analytics alert monitoring dashboard',
+        title: 'Alert Monitoring',
+        description:
+          'Prioritised alert view for unresolved safety and environmental findings that need review or escalation.',
+      },
+      {
+        src: '/projects/safety/safe compliance.jpeg',
+        alt: 'Safety Environmental Risk Analytics compliance dashboard',
+        title: 'Compliance Review',
+        description:
+          'Compliance-focused dashboard for tracking risk controls, reporting status, and governance-oriented indicators.',
+      },
+      {
+        src: '/projects/safety/safe environmental.jpeg',
+        alt: 'Safety Environmental Risk Analytics environmental dashboard',
+        title: 'Environmental Risk',
+        description:
+          'Environmental risk view for emissions, site conditions, impact indicators, and sustainability-related monitoring.',
+      },
+      {
+        src: '/projects/safety/safe risk.jpeg',
+        alt: 'Safety Environmental Risk Analytics risk assessment dashboard',
+        title: 'Risk Assessment',
+        description:
+          'Risk assessment view that groups safety and environmental signals into clearer priority and severity categories.',
+      },
+    ],
     tagline: 'Safety & Environmental Risk Insights',
-    tags: ['Python', 'Risk Analytics', 'ESG', 'Visualization', 'Dashboard'],
+    tags: ['Python', 'Risk Analytics', 'ESG', 'Compliance', 'Incident Monitoring', 'Dashboard'],
     category: 'Risk Analytics - Safety & Environment',
     summary:
-      'A safety and environmental analytics project focused on identifying risk patterns and presenting operational insight clearly.',
+      'A safety and environmental analytics project focused on identifying incident, alert, compliance, environmental, and operational risk patterns for clearer reporting.',
     problem:
       'Safety and environmental records need structured reporting so teams can understand risk areas and prioritise action.',
     dataset:
@@ -907,17 +1037,18 @@ export const projects = [
     methodology: [
       'Prepared safety and environmental records for analysis',
       'Grouped risk indicators into clearer reporting categories',
-      'Built visual summaries for incident or risk comparison',
+      'Built visual summaries for incidents, alerts, compliance, environmental indicators, and risk assessment',
       'Translated findings into practical risk insights',
     ],
     insights: [
       'Highlights recurring safety and environmental patterns',
       'Supports prioritisation of risk areas',
+      'Connects incident, compliance, alert, and environmental views into one review workflow',
       'Shows how analytics can support operational review',
     ],
     outcome:
-      'A risk analytics project demonstrating data preparation, visual reporting, and operational insight communication.',
-    skills: ['Risk analytics', 'Safety reporting', 'Environmental analytics', 'Visualization'],
+      'A risk analytics project demonstrating data preparation, visual reporting, compliance monitoring, and operational insight communication.',
+    skills: ['Risk analytics', 'Safety reporting', 'Environmental analytics', 'Compliance monitoring', 'Visualization'],
     learned:
       'This project helped me practise making technical analysis useful for operational and compliance-focused contexts.',
     github: 'https://github.com/graysonchia/Safety-Environmental-Risk-Analytics',
@@ -928,10 +1059,10 @@ export const projects = [
     title: 'Smart Reimbursement System',
     domain: 'Software Systems',
     emoji: 'SR',
-    image: '',
+    image: '/projects/smart_reimbursement_system/joget.png',
     imageAlt: 'Smart Reimbursement System application preview',
     tagline: 'Claims Workflow & Reimbursement Management',
-    tags: ['Software Engineering', 'Database', 'Workflow', 'Web App', 'Management System'],
+    tags: ['Joget DX', 'Low-Code', 'Workflow', 'RBAC', 'Dashboard'],
     category: 'Software Engineering - Business System',
     summary:
       'A reimbursement management system designed to organise claims, approval workflows, and business process tracking.',
@@ -939,12 +1070,12 @@ export const projects = [
       'Manual reimbursement processes can be slow and difficult to track without a system for claim submission, review, and status management.',
     dataset:
       'Application records for users, reimbursement claims, claim statuses, and approval workflow activity.',
-    tools: ['Database Design', 'SQL', 'Web Development', 'UI/UX', 'System Design'],
+    tools: ['Joget DX'],
     methodology: [
-      'Designed reimbursement workflow and user roles',
-      'Modelled claim records and approval status tracking',
-      'Built application flows for submission and review',
-      'Focused on making business process information easier to manage',
+      'Designed the expense workflow in Joget DX',
+      'Configured multi-level approval flows and role-based access control',
+      'Added automated calculations for claim processing',
+      'Built real-time dashboards for reimbursement tracking',
     ],
     insights: [
       'Shows how workflow systems reduce manual tracking effort',
@@ -964,10 +1095,10 @@ export const projects = [
     title: 'Advanced Tuition Centre',
     domain: 'Software Systems',
     emoji: 'AT',
-    image: '',
+    image: '/projects/advanced_tuition_centre/oop.jpg',
     imageAlt: 'Advanced Tuition Centre management system preview',
     tagline: 'Tuition Centre Management System',
-    tags: ['Software Engineering', 'Database', 'Web App', 'Management System', 'UI/UX'],
+    tags: ['Java', 'NetBeans', 'Java Swing', 'OOP', 'Desktop App'],
     category: 'Software Engineering - Education System',
     summary:
       'An education management system project for organising tuition centre records, student information, and administrative workflows.',
@@ -975,12 +1106,12 @@ export const projects = [
       'Tuition centres need structured systems to manage students, classes, and administrative records without relying on scattered manual files.',
     dataset:
       'Education management records such as students, classes, staff, schedules, and administrative details.',
-    tools: ['Database Design', 'SQL', 'Web Development', 'UI/UX', 'System Design'],
+    tools: ['Java', 'NetBeans', 'Java Swing'],
     methodology: [
-      'Designed education management workflows',
-      'Structured records for students, classes, and staff',
-      'Built application flows for administrative use',
-      'Focused on practical usability for repeated management tasks',
+      'Built the desktop application in Java using NetBeans',
+      'Created Java Swing interfaces for tuition centre operations',
+      'Applied OOP principles to structure application logic',
+      'Managed student, tutor, and course records through the GUI',
     ],
     insights: [
       'Demonstrates how database structure supports education operations',
@@ -1000,10 +1131,10 @@ export const projects = [
     title: 'Jobnow',
     domain: 'Software Systems',
     emoji: 'JN',
-    image: '/projects/jobnow-app.png',
+    image: '/projects/jobnow/jobnow1.jpeg',
     imageAlt: 'Jobnow job search application preview',
     tagline: 'Job Search & Recruitment Application',
-    tags: ['Mobile App', 'Software Engineering', 'UI/UX', 'Job Platform', 'Database'],
+    tags: ['React Native (Expo)', 'Node.js', 'Supabase', 'Android Studio', 'Mobile App'],
     category: 'Software Engineering - Recruitment App',
     summary:
       'A job search application project focused on connecting job seekers with opportunities through a clean recruitment workflow.',
@@ -1011,12 +1142,13 @@ export const projects = [
       'Job seekers need a simple way to browse opportunities, manage applications, and understand role details without friction.',
     dataset:
       'Application data for job listings, users, profiles, and recruitment workflow records.',
-    tools: ['Mobile Development', 'Database Design', 'UI/UX', 'System Design'],
+    tools: ['React Native (Expo)', 'Node.js', 'Supabase', 'Android Studio'],
     methodology: [
-      'Designed job seeker and job listing workflows',
-      'Structured application data around listings, profiles, and interactions',
-      'Built user-facing screens for browsing and reviewing roles',
-      'Focused on clear navigation and practical recruitment use cases',
+      'Built a swipe-based mobile job matching app in React Native Expo',
+      'Implemented a Node.js backend with Supabase integration',
+      'Created matching flows for job seekers and employers',
+      'Added real-time matching and in-app chat features',
+      'Delivered an Android-compatible app using Android Studio',
     ],
     insights: [
       'Shows how recruitment workflows can be simplified through app design',
@@ -1036,10 +1168,10 @@ export const projects = [
     title: 'Sales Data Analysis',
     domain: 'Business Analytics',
     emoji: 'SA',
-    image: '',
+    image: '/projects/sales_data_analysis/sda.avif',
     imageAlt: 'Sales Data Analysis dashboard preview',
     tagline: 'Sales Performance Analytics',
-    tags: ['Python', 'Sales Analytics', 'EDA', 'Visualization', 'Dashboard'],
+    tags: ['Python', 'Pandas', 'Matplotlib', 'Sales Analytics', 'EDA'],
     category: 'Business Analytics - Sales Performance',
     summary:
       'A sales analytics project focused on exploring business performance, revenue patterns, and data-backed commercial insights.',
@@ -1047,12 +1179,12 @@ export const projects = [
       'Sales records can reveal useful trends, but they need cleaning, aggregation, and visual reporting before performance patterns are clear.',
     dataset:
       'Sales transaction records prepared for exploratory analysis, revenue summaries, and business reporting.',
-    tools: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+    tools: ['Python', 'Pandas', 'Matplotlib'],
     methodology: [
-      'Prepared sales records for analysis',
-      'Aggregated performance by relevant business dimensions',
-      'Visualised sales patterns, comparisons, and trends',
-      'Summarised findings for business decision-making',
+      'Performed exploratory data analysis on the sales dataset',
+      'Automated KPI calculations including total revenue, top products, and regional distribution',
+      'Visualised monthly sales trends with Matplotlib line graphs',
+      'Summarised sales performance patterns for business review',
     ],
     insights: [
       'Highlights sales performance patterns across the dataset',
