@@ -67,6 +67,7 @@ export default function Contact() {
   const [feedback, setFeedback] = useState('')
   const [reason, setReason] = useState('')
   const [reasonOpen, setReasonOpen] = useState(false)
+  const emailJsConfigured = getEmailJsConfigStatus().configured
 
   useEffect(() => {
     if (import.meta.env.DEV) {
@@ -125,8 +126,8 @@ export default function Contact() {
         )
       }
       window.location.href = buildMailtoLink({ name, email, company, reason, message })
-      setFormState('success')
-      setFeedback('Your email app should open with the message ready to send.')
+      setFormState('mailto')
+      setFeedback('Your email app should open with a draft ready to send.')
       return
     }
 
@@ -159,10 +160,11 @@ export default function Contact() {
   }
 
   const buttonText = {
-    idle: 'Send Message',
+    idle: emailJsConfigured ? 'Send Message' : 'Open Email App',
     loading: 'Sending...',
     success: 'Message Sent',
-    error: 'Send Message',
+    mailto: 'Email Draft Opened',
+    error: emailJsConfigured ? 'Send Message' : 'Open Email App',
   }[formState]
 
   return (
@@ -197,7 +199,7 @@ export default function Contact() {
 
         <form ref={formRef} onSubmit={submit} className="soft-card grid gap-4 p-5 sm:p-6">
           <p className="border-b border-border pb-4 text-xl font-bold leading-8 text-text">
-            Have a project question, collaboration idea, or reason to connect? Send me a message and I&apos;ll get back
+            Have a project question, collaboration idea, or reason to connect? Use the form below and I&apos;ll get back
             to you soon.
           </p>
           <label className="grid gap-2 font-semibold">
@@ -286,7 +288,7 @@ export default function Contact() {
           {feedback && (
             <p
               className={`rounded-lg border px-4 py-3 text-sm font-semibold ${
-                formState === 'success'
+                formState === 'success' || formState === 'mailto'
                   ? 'border-green/40 bg-green/10 text-green'
                   : 'border-accent/40 bg-accent/10 text-accent-glow'
               }`}
