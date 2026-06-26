@@ -759,27 +759,52 @@ export const projects = [
     title: 'CrudeTrack',
     domain: 'Oil & Gas',
     emoji: 'CT',
-    image: '',
+    image: '/projects/crudetrack/crude xgboost.jpeg',
     imageAlt: 'CrudeTrack crude oil analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/crudetrack/crude xgboost.jpeg',
+        alt: 'CrudeTrack XGBoost crude oil forecasting dashboard',
+        title: 'XGBoost Forecasting',
+        description:
+          'Gradient-boosted forecasting view for crude oil price movement, model performance, and market trend comparison.',
+      },
+      {
+        src: '/projects/crudetrack/crude lstm.jpeg',
+        alt: 'CrudeTrack LSTM crude oil forecasting dashboard',
+        title: 'LSTM Forecasting',
+        description:
+          'Sequence-model analysis for crude oil time-series movement with forecast traces and historical price context.',
+      },
+      {
+        src: '/projects/crudetrack/crude arima.jpeg',
+        alt: 'CrudeTrack ARIMA crude oil forecasting dashboard',
+        title: 'ARIMA Forecasting',
+        description:
+          'Classical time-series forecasting view comparing ARIMA projections with observed crude oil price behaviour.',
+      },
+    ],
     tagline: 'Crude Oil Market Analytics',
-    tags: ['Python', 'Oil & Gas', 'Time Series', 'Forecasting', 'Dashboard'],
+    tags: ['Python', 'Oil & Gas', 'XGBoost', 'LSTM', 'ARIMA', 'Forecasting'],
     category: 'Energy Analytics - Market Trends',
     summary:
-      'An energy analytics project focused on crude oil market movement, trend monitoring, and visual reporting.',
+      'An energy analytics project focused on crude oil market movement, trend monitoring, forecasting models, and visual reporting.',
     problem:
       'Oil price movement affects energy decisions and business planning, but raw market data needs structured analysis to reveal useful patterns.',
     dataset:
       'Crude oil and energy market time-series data prepared for trend analysis and visual reporting.',
-    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'XGBoost', 'TensorFlow/Keras', 'statsmodels', 'Matplotlib'],
     methodology: [
       'Prepared crude oil price records for time-series analysis',
       'Explored trend and volatility patterns',
-      'Created visual summaries for market movement',
+      'Built ARIMA, LSTM, and XGBoost forecasting workflows',
+      'Compared forecast outputs against historical market movement',
       'Organised findings into an energy analytics workflow',
     ],
     insights: [
       'Shows trend movement across oil market data',
       'Supports analysis of volatility and price shifts',
+      'Compares classical, deep-learning, and gradient-boosted forecasting approaches',
       'Connects market data with energy-sector reporting',
     ],
     outcome:
