@@ -61,6 +61,7 @@ export default function Contact() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
     if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS is missing one or more Vite environment variables.')
       setFormState('error')
       setFeedback('Sorry, something went wrong. Please try again or email me directly.')
       return
@@ -75,7 +76,8 @@ export default function Contact() {
       setFeedback('Thanks! Your message has been sent successfully.')
       event.currentTarget.reset()
       setReason('')
-    } catch {
+    } catch (error) {
+      console.error('EmailJS send failed:', error)
       setFormState('error')
       setFeedback('Sorry, something went wrong. Please try again or email me directly.')
     }
