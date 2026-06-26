@@ -17,28 +17,25 @@ export default function ProjectCard({ project, onOpen }) {
           openProject()
         }
       }}
-      whileHover={{ scale: 1.02 }}
-      className="card focus-ring group flex h-full cursor-pointer flex-col p-5 text-left transition hover:border-accent hover:shadow-[0_0_28px_rgba(99,102,241,0.18)]"
+      whileHover={{ y: -6 }}
+      className="soft-card focus-ring group flex h-full cursor-pointer flex-col p-4 text-left transition duration-300 hover:border-accent/80 hover:shadow-[0_0_32px_rgba(99,102,241,0.2)]"
     >
       <ProjectPreview project={project} compact />
-      <div className="flex items-start justify-between gap-4">
-        <span className="mt-5 rounded-lg bg-accent/15 px-3 py-2 font-mono text-sm font-bold text-accent-glow">
-          {project.emoji}
-        </span>
-        <ArrowUpRight className="mt-5 text-muted transition group-hover:text-accent-glow" size={20} />
-      </div>
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-xs font-bold text-accent-glow">
           {project.domain}
         </span>
         <span className="font-mono text-xs font-bold uppercase text-muted">{project.category}</span>
       </div>
-      <h3 className="mt-2 font-display text-xl font-bold">{project.title}</h3>
+      <div className="mt-3 flex items-start justify-between gap-4">
+        <h3 className="font-display text-xl font-bold leading-7">{project.title}</h3>
+        <ArrowUpRight className="mt-1 shrink-0 text-muted transition group-hover:text-accent-glow" size={20} />
+      </div>
       <p className="mt-1 font-semibold text-accent-glow">{project.tagline}</p>
-      <p className="mt-4 flex-1 leading-7 text-muted">{project.summary}</p>
+      <p className="mt-4 flex-1 text-sm leading-7 text-muted">{project.summary}</p>
       <div className="mt-5 flex flex-wrap gap-2">
-        {project.tags.slice(0, 5).map((tag) => (
-          <span key={tag} className="rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-semibold text-muted">
+        {(project.tools?.length ? project.tools : project.tags).slice(0, 5).map((tag) => (
+          <span key={tag} className="rounded-full border border-border bg-bg/45 px-3 py-1 text-xs font-semibold text-muted">
             {tag}
           </span>
         ))}
@@ -53,7 +50,7 @@ export default function ProjectCard({ project, onOpen }) {
           }}
           className="focus-ring inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-glow"
         >
-          View Details <ArrowUpRight size={16} />
+          View Case Study <ArrowUpRight size={16} />
         </button>
         {project.github && (
           <a

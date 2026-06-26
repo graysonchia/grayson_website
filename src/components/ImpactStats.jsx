@@ -30,7 +30,7 @@ const buildAreas = [
 
 export default function ImpactStats() {
   return (
-    <section className="py-16">
+    <section className="py-20">
       <div className="section-shell">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="font-mono text-sm font-bold text-green">Strength snapshot</p>
@@ -48,7 +48,7 @@ export default function ImpactStats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ delay: index * 0.06 }}
-              className="card group p-5 transition hover:-translate-y-1 hover:border-accent hover:bg-surface"
+              className="soft-card group p-5 transition hover:-translate-y-1 hover:border-accent hover:bg-surface"
             >
               <div className="flex items-center justify-between gap-3">
                 <span className="rounded-lg bg-accent/15 p-2 text-accent-glow transition group-hover:bg-accent/20">

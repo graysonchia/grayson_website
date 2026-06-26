@@ -5,7 +5,7 @@ import { BriefcaseBusiness, ChevronDown, Code2, Mail, Send } from 'lucide-react'
 const reasonOptions = [
   'Internship opportunity',
   'Entry-level role',
-  'Freelance / project collaboration',
+  'Project collaboration',
   'Networking',
   'Other',
 ]
@@ -89,8 +89,8 @@ export default function Contact() {
   }[formState]
 
   return (
-    <section id="contact" className="bg-surface/35 py-24">
-      <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className="section-band bg-surface/35 py-28">
+      <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
           <p className="font-mono text-sm font-bold text-green">Open to roles</p>
           <h2 className="section-title mt-3">Let&apos;s talk data.</h2>
@@ -105,15 +105,18 @@ export default function Contact() {
               can analyse problems, work with data, and build practical solutions around it, let&apos;s connect.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 text-muted">
-            <div className="flex items-center gap-3">
+          <div className="mt-8 grid gap-3 text-muted">
+            <a
+              href="mailto:chiajunyang1610@gmail.com"
+              className="focus-ring flex items-center gap-3 rounded-lg border border-border bg-bg/35 p-4 transition hover:border-accent/70 hover:text-text"
+            >
               <Mail className="text-accent-glow" /> chiajunyang1610@gmail.com
-            </div>
+            </a>
             <a
               href="https://github.com/graysonchia"
               target="_blank"
               rel="noreferrer"
-              className="focus-ring flex items-center gap-3 rounded-sm hover:text-text"
+              className="focus-ring flex items-center gap-3 rounded-lg border border-border bg-bg/35 p-4 transition hover:border-accent/70 hover:text-text"
             >
               <Code2 className="text-accent-glow" /> github.com/graysonchia
             </a>
@@ -121,15 +124,15 @@ export default function Contact() {
               href="https://www.linkedin.com/in/grayson-chia-a85959274/"
               target="_blank"
               rel="noreferrer"
-              className="focus-ring flex items-center gap-3 rounded-sm hover:text-text"
+              className="focus-ring flex items-center gap-3 rounded-lg border border-border bg-bg/35 p-4 transition hover:border-accent/70 hover:text-text"
             >
               <BriefcaseBusiness className="text-accent-glow" /> linkedin.com/in/grayson-chia-a85959274
             </a>
           </div>
         </div>
 
-        <form ref={formRef} onSubmit={submit} className="card grid gap-4 p-6">
-          <p className="text-xl font-bold leading-8 text-text">
+        <form ref={formRef} onSubmit={submit} className="soft-card grid gap-4 p-5 sm:p-6">
+          <p className="border-b border-border pb-4 text-xl font-bold leading-8 text-text">
             Have an internship opportunity, project idea, or role that fits my skills? Send me a message and I&apos;ll
             get back to you soon.
           </p>
@@ -155,8 +158,8 @@ export default function Contact() {
               className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
             />
           </label>
-          <label className="grid gap-2 font-semibold">
-            Reason for Contact *
+          <div className="grid gap-2 font-semibold">
+            <span>Reason for Contact *</span>
             <input type="hidden" name="reason" value={reason} />
             <div
               className="relative"
@@ -199,7 +202,7 @@ export default function Contact() {
                 </div>
               )}
             </div>
-          </label>
+          </div>
           <label className="grid gap-2 font-semibold">
             Message *
             <textarea

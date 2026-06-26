@@ -56,7 +56,7 @@ export default function Projects({ onOpenProject }) {
   }
 
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-28">
       <div className="section-shell">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="font-mono text-sm font-bold text-green">Real data. Real systems. Real insights.</p>

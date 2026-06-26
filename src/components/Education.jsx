@@ -26,7 +26,7 @@ const educationItems = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-24">
+    <section id="education" className="py-28">
       <div className="section-shell">
         <p className="font-mono text-sm font-bold text-green">Academic foundation</p>
         <h2 className="section-title mt-3">Education</h2>
@@ -38,7 +38,7 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="card p-6"
+              className="soft-card p-6"
             >
               <div className="grid gap-6 md:grid-cols-[180px_1fr_160px] md:items-center">
                 <div className="md:self-start">

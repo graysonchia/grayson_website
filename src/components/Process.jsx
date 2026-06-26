@@ -12,7 +12,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-surface/25 py-24">
+    <section id="process" className="section-band bg-surface/25 py-28">
       <div className="section-shell">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="font-mono text-sm font-bold text-green">How I build</p>
@@ -40,7 +40,7 @@ export default function Process() {
               <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-bg text-accent-glow shadow-[0_0_22px_rgba(99,102,241,0.18)] transition group-hover:border-accent-glow group-hover:bg-accent/15">
                 <Icon size={20} />
               </div>
-              <div className="card flex-1 p-4 transition group-hover:-translate-y-1 group-hover:border-accent/70 md:mt-5 md:min-h-36">
+              <div className="soft-card flex-1 p-4 transition group-hover:-translate-y-1 group-hover:border-accent/70 md:mt-5 md:min-h-36">
                 <p className="font-mono text-xs font-bold text-green">Step {index + 1}</p>
                 <h3 className="mt-2 text-sm font-bold leading-6 text-text">{label}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{description}</p>

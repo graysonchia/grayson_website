@@ -3,7 +3,7 @@ import { ArrowUpRight, Code2 } from 'lucide-react'
 import { projects } from '../data/projects'
 import ProjectPreview from './ProjectPreview'
 
-const featuredIds = ['fxpulse-my', 'wellanalytics', 'pricewatch']
+const featuredIds = ['transitpulse', 'habitflow', 'pricewatch']
 
 export default function FeaturedProjects({ onOpenProject }) {
   const featuredProjects = featuredIds
@@ -11,7 +11,7 @@ export default function FeaturedProjects({ onOpenProject }) {
     .filter(Boolean)
 
   return (
-    <section id="featured-projects" className="bg-surface/25 py-24">
+    <section id="featured-projects" className="section-band bg-surface/25 py-28">
       <div className="section-shell">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="font-mono text-sm font-bold text-green">Selected work</p>
@@ -21,7 +21,7 @@ export default function FeaturedProjects({ onOpenProject }) {
           </p>
         </motion.div>
 
-        <div className="mt-10 space-y-6">
+        <div className="mt-12 space-y-8">
           {featuredProjects.map((project, index) => (
             <motion.article
               key={project.id}
@@ -29,7 +29,7 @@ export default function FeaturedProjects({ onOpenProject }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="card grid gap-6 p-5 md:grid-cols-2 md:items-center md:p-6"
+              className="soft-card grid gap-7 overflow-hidden p-5 transition hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_0_36px_rgba(99,102,241,0.2)] md:grid-cols-[1.08fr_0.92fr] md:items-center md:p-6 lg:p-7"
             >
               <ProjectPreview project={project} className={index % 2 === 1 ? 'md:order-2' : ''} />
               <div className={index % 2 === 1 ? 'md:order-1' : ''}>
@@ -39,7 +39,7 @@ export default function FeaturedProjects({ onOpenProject }) {
                   </span>
                   <span className="font-mono text-xs font-bold uppercase text-muted">{project.category}</span>
                 </div>
-                <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">{project.title}</h3>
+                <h3 className="mt-4 font-display text-2xl font-bold md:text-3xl">{project.title}</h3>
                 <p className="mt-2 font-semibold text-accent-glow">{project.tagline}</p>
                 <p className="mt-4 leading-8 text-muted">{project.summary}</p>
 
@@ -67,7 +67,7 @@ export default function FeaturedProjects({ onOpenProject }) {
                     onClick={() => onOpenProject(project)}
                     className="focus-ring inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-glow"
                   >
-                    View Details <ArrowUpRight size={16} />
+                    View Case Study <ArrowUpRight size={16} />
                   </button>
                 </div>
               </div>
