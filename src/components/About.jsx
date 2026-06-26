@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BarChart3, Briefcase, Code2, GraduationCap, MapPin, Sparkles, University } from 'lucide-react'
+import { BarChart3, Code2, Database, GraduationCap, Layers3, Sparkles, University } from 'lucide-react'
 
 const stats = [
   [GraduationCap, 'ICT Software Engineering Student'],
   [University, 'APU Data Analytics Society Member'],
   [BarChart3, 'Data Analytics + Software Engineering Focus'],
-  [Briefcase, 'Open to Internship / Entry-Level Roles'],
+  [Layers3, 'Project Showcase Portfolio'],
 ]
 
 const quickFacts = [
-  [MapPin, 'Kuala Lumpur, Malaysia'],
   [GraduationCap, 'ICT Software Engineering at APU'],
   [BarChart3, 'Analytics, dashboards, ML workflows'],
+  [Database, 'Databases, data pipelines, reporting'],
   [Code2, 'React, FastAPI, SQL, Python'],
 ]
 
@@ -27,23 +27,17 @@ export default function About() {
           <h2 className="section-title mt-3">About Me</h2>
           <div className="mt-6 space-y-5 text-base leading-8 text-muted">
             <p>
-              As an ICT Software Engineering student at Asia Pacific University (APU), I&apos;m focused on building
-              practical solutions that connect software development, data analytics, and clear decision-making.
+              As an ICT Software Engineering student, I use this portfolio to document the projects I have built
+              across data analytics, software development, dashboards, databases, and application design.
             </p>
             <p>
-              I enjoy working on projects that combine technical development and analytics, from mobile apps and web
-              systems to dashboards, databases, data pipelines, and machine learning workflows. Through my academic and
-              personal projects, I have used tools such as Python, SQL, Power BI, FastAPI, React, PostgreSQL, and
-              Jupyter to solve practical problems and present data in a clear, useful way.
+              My projects combine technical development and analytics &mdash; from mobile apps and web systems to
+              dashboards, data pipelines, database structures, and machine learning workflows. I focus on turning raw
+              information into clear outputs that are easier to understand, explore, and use.
             </p>
             <p>
-              Beyond analytics, I also have experience in full-stack development, UI/UX design, low-code systems, and
-              database modelling, which helps me understand how data-driven applications are built from end to end.
-            </p>
-            <p>
-              I&apos;m currently looking for internship or entry-level opportunities where I can apply my skills in data
-              analysis, dashboard reporting, software engineering, and problem-solving to contribute to real business
-              decisions.
+              Beyond analytics, I also work with full-stack development, UI/UX design, low-code systems, and database
+              modelling, which helps me understand how data-driven applications are built from end to end.
             </p>
           </div>
         </motion.div>
@@ -74,7 +68,7 @@ export default function About() {
               )}
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg/90 to-transparent p-4">
                 <span className="inline-flex rounded-full border border-green/30 bg-green/10 px-3 py-1 text-xs font-bold text-green">
-                  Open to internship / entry-level roles
+                  Project showcase portfolio
                 </span>
               </div>
             </div>

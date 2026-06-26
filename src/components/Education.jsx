@@ -7,7 +7,6 @@ const educationItems = [
     institution: 'Asia Pacific University of Technology and Innovation',
     qualification: 'Diploma in Information & Communication Technology (Software Engineering)',
     location: 'Kuala Lumpur, Malaysia',
-    result: 'CGPA: 3.4 / 4.0',
     logo: '/logos/apu.png',
     logoAlt: 'Asia Pacific University logo',
     logoLightBackground: true,
@@ -17,7 +16,6 @@ const educationItems = [
     institution: 'SMK St. Gabriel',
     qualification: 'Higher School Certificate (SPM)',
     location: 'Kuala Lumpur, Malaysia',
-    result: 'Distinction in Mathematics and English',
     logo: '/logos/stgab.png',
     logoAlt: 'SMK St. Gabriel logo',
     logoLightBackground: true,
@@ -47,9 +45,7 @@ export default function Education() {
                 <div className="min-w-0">
                   <h3 className="font-display text-2xl font-bold">{education.institution}</h3>
                   <p className="mt-2 font-semibold text-accent-glow">{education.qualification}</p>
-                  <p className="mt-2 text-muted">
-                    {education.location} | {education.result}
-                  </p>
+                  <p className="mt-2 text-muted">{education.location}</p>
                 </div>
                 <EducationLogo education={education} />
               </div>

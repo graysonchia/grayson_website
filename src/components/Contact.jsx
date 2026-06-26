@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
-import { BriefcaseBusiness, ChevronDown, Code2, Mail, Send } from 'lucide-react'
+import { ChevronDown, Code2, Mail, Send } from 'lucide-react'
 
 const reasonOptions = [
-  'Internship opportunity',
-  'Entry-level role',
+  'Project discussion',
+  'Question about my work',
   'Project collaboration',
   'Networking',
   'Other',
@@ -149,17 +149,12 @@ export default function Contact() {
     <section id="contact" className="section-band bg-surface/35 py-28">
       <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
-          <p className="font-mono text-sm font-bold text-green">Open to roles</p>
-          <h2 className="section-title mt-3">Let&apos;s talk data.</h2>
+          <p className="font-mono text-sm font-bold text-green">Project contact</p>
+          <h2 className="section-title mt-3">Let&rsquo;s connect.</h2>
           <div className="mt-6 space-y-5 leading-8 text-muted">
             <p>
-              I&apos;m currently open to internship and entry-level opportunities in data analytics, software
-              engineering, and full-stack development.
-            </p>
-            <p>
-              I enjoy working on projects that connect data, systems, and user experience, from building dashboards
-              and analytics pipelines to developing web and mobile applications. If you&apos;re looking for someone who
-              can analyse problems, work with data, and build practical solutions around it, let&apos;s connect.
+              If you&rsquo;d like to discuss a project, ask about my work, or connect about data analytics and software
+              development, feel free to reach out.
             </p>
           </div>
           <div className="mt-8 grid gap-3 text-muted">
@@ -177,21 +172,13 @@ export default function Contact() {
             >
               <Code2 className="text-accent-glow" /> github.com/graysonchia
             </a>
-            <a
-              href="https://www.linkedin.com/in/grayson-chia-a85959274/"
-              target="_blank"
-              rel="noreferrer"
-              className="focus-ring flex items-center gap-3 rounded-lg border border-border bg-bg/35 p-4 transition hover:border-accent/70 hover:text-text"
-            >
-              <BriefcaseBusiness className="text-accent-glow" /> linkedin.com/in/grayson-chia-a85959274
-            </a>
           </div>
         </div>
 
         <form ref={formRef} onSubmit={submit} className="soft-card grid gap-4 p-5 sm:p-6">
           <p className="border-b border-border pb-4 text-xl font-bold leading-8 text-text">
-            Have an internship opportunity, project idea, or role that fits my skills? Send me a message and I&apos;ll
-            get back to you soon.
+            Have a project question, collaboration idea, or reason to connect? Send me a message and I&apos;ll get back
+            to you soon.
           </p>
           <label className="grid gap-2 font-semibold">
             Name *
@@ -265,7 +252,7 @@ export default function Contact() {
             <textarea
               name="message"
               rows="6"
-              placeholder="Tell me about the opportunity, project, or reason you'd like to connect."
+              placeholder="Tell me about the project, question, or reason you'd like to connect."
               className="focus-ring resize-none rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
             />
           </label>
