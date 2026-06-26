@@ -127,7 +127,7 @@ export default function Contact() {
       }
       window.location.href = buildMailtoLink({ name, email, company, reason, message })
       setFormState('mailto')
-      setFeedback('Your email app should open with a draft ready to send.')
+      setFeedback('No email has been sent yet. Your email app should open a draft, then you need to press Send there.')
       return
     }
 
@@ -160,11 +160,11 @@ export default function Contact() {
   }
 
   const buttonText = {
-    idle: emailJsConfigured ? 'Send Message' : 'Open Email App',
+    idle: emailJsConfigured ? 'Send Message' : 'Open Email Draft',
     loading: 'Sending...',
     success: 'Message Sent',
     mailto: 'Email Draft Opened',
-    error: emailJsConfigured ? 'Send Message' : 'Open Email App',
+    error: emailJsConfigured ? 'Send Message' : 'Open Email Draft',
   }[formState]
 
   return (
@@ -199,8 +199,10 @@ export default function Contact() {
 
         <form ref={formRef} onSubmit={submit} className="soft-card grid gap-4 p-5 sm:p-6">
           <p className="border-b border-border pb-4 text-xl font-bold leading-8 text-text">
-            Have a project question, collaboration idea, or reason to connect? Use the form below and I&apos;ll get back
-            to you soon.
+            Have a project question, collaboration idea, or reason to connect?{' '}
+            {emailJsConfigured
+              ? "Send me a message below and I'll get back to you soon."
+              : 'Use the form below to open a pre-filled email draft.'}
           </p>
           <label className="grid gap-2 font-semibold">
             Name *
@@ -288,7 +290,7 @@ export default function Contact() {
           {feedback && (
             <p
               className={`rounded-lg border px-4 py-3 text-sm font-semibold ${
-                formState === 'success' || formState === 'mailto'
+                formState === 'success'
                   ? 'border-green/40 bg-green/10 text-green'
                   : 'border-accent/40 bg-accent/10 text-accent-glow'
               }`}
