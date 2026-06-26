@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { BriefcaseBusiness, ChevronDown, Code2, Mail, Send } from 'lucide-react'
 
@@ -10,6 +10,41 @@ const reasonOptions = [
   'Other',
 ]
 
+const getEmailJsConfigStatus = () => {
+  const status = {
+    serviceId: Boolean(import.meta.env.VITE_EMAILJS_SERVICE_ID),
+    templateId: Boolean(import.meta.env.VITE_EMAILJS_TEMPLATE_ID),
+    publicKey: Boolean(import.meta.env.VITE_EMAILJS_PUBLIC_KEY),
+  }
+
+  return {
+    ...status,
+    configured: status.serviceId && status.templateId && status.publicKey,
+    missing: [
+      !status.serviceId && 'VITE_EMAILJS_SERVICE_ID',
+      !status.templateId && 'VITE_EMAILJS_TEMPLATE_ID',
+      !status.publicKey && 'VITE_EMAILJS_PUBLIC_KEY',
+    ].filter(Boolean),
+  }
+}
+
+const formatEmailJsConfigStatus = (status) =>
+  [
+    `configured=${status.configured ? 'yes' : 'no'}`,
+    `serviceId=${status.serviceId ? 'present' : 'missing'}`,
+    `templateId=${status.templateId ? 'present' : 'missing'}`,
+    `publicKey=${status.publicKey ? 'present' : 'missing'}`,
+    `missing=${status.missing.length ? status.missing.join(', ') : 'none'}`,
+  ].join(' | ')
+
+const formatEmailJsError = (error) =>
+  [
+    `status=${error?.status ?? 'unknown'}`,
+    `text=${error?.text || 'none'}`,
+    `message=${error?.message || 'none'}`,
+    `name=${error?.name || 'none'}`,
+  ].join(' | ')
+
 export default function Contact() {
   const formRef = useRef(null)
   const [formState, setFormState] = useState('idle')
@@ -17,9 +52,17 @@ export default function Contact() {
   const [reason, setReason] = useState('')
   const [reasonOpen, setReasonOpen] = useState(false)
 
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      const emailJsConfigStatus = getEmailJsConfigStatus()
+      console.log(`EmailJS config status: ${formatEmailJsConfigStatus(emailJsConfigStatus)}`)
+    }
+  }, [])
+
   const submit = async (event) => {
     event.preventDefault()
-    const form = new FormData(event.currentTarget)
+    const formElement = event.currentTarget
+    const form = new FormData(formElement)
     const name = form.get('from_name')?.toString().trim()
     const email = form.get('from_email')?.toString().trim()
     const reason = form.get('reason')?.toString().trim()
@@ -56,14 +99,14 @@ export default function Contact() {
       return
     }
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    const emailJsConfigStatus = getEmailJsConfigStatus()
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS is missing one or more Vite environment variables.')
+    if (!emailJsConfigStatus.configured) {
+      console.error(
+        `EmailJS is missing required Vite environment variables: ${formatEmailJsConfigStatus(emailJsConfigStatus)}`,
+      )
       setFormState('error')
-      setFeedback('Sorry, something went wrong. Please try again or email me directly.')
+      setFeedback('Email service is not configured yet. Please email me directly.')
       return
     }
 
@@ -71,13 +114,25 @@ export default function Contact() {
     setFeedback('')
 
     try {
-      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey })
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formElement,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY },
+      )
       setFormState('success')
       setFeedback('Thanks! Your message has been sent successfully.')
-      event.currentTarget.reset()
+      formElement.reset()
       setReason('')
     } catch (error) {
-      console.error('EmailJS send failed:', error)
+      console.error(`EmailJS sendForm failed: ${formatEmailJsError(error)}`)
+      console.error('EmailJS raw error:', {
+        message: error?.message,
+        name: error?.name,
+        status: error?.status,
+        text: error?.text,
+        error,
+      })
       setFormState('error')
       setFeedback('Sorry, something went wrong. Please try again or email me directly.')
     }
