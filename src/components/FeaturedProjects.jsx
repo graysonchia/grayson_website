@@ -3,7 +3,7 @@ import { ArrowUpRight, Code2 } from 'lucide-react'
 import { projects } from '../data/projects'
 import ProjectPreview from './ProjectPreview'
 
-const featuredIds = ['transitpulse', 'habitflow', 'pricewatch']
+const featuredIds = ['mediops', 'transitpulse', 'habitflow']
 
 export default function FeaturedProjects({ onOpenProject }) {
   const featuredProjects = featuredIds

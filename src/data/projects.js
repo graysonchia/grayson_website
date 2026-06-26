@@ -4,8 +4,52 @@ export const projects = [
     title: 'MediOps',
     domain: 'Healthcare',
     emoji: 'MO',
-    image: '',
+    image: '/projects/mediops/live.jpeg',
     imageAlt: 'MediOps hospital operations dashboard preview',
+    gallery: [
+      {
+        src: '/projects/mediops/live.jpeg',
+        alt: 'MediOps live hospital operations dashboard',
+        title: 'Live Operations',
+        description:
+          'Network-level command view for hospital occupancy, wait times, staffing, equipment status, and operational alerts.',
+      },
+      {
+        src: '/projects/mediops/patient.jpeg',
+        alt: 'MediOps patient flow dashboard',
+        title: 'Patient Flow',
+        description:
+          'Patient movement, discharge readiness, length-of-stay indicators, and hospital flow metrics for operational review.',
+      },
+      {
+        src: '/projects/mediops/prediction.jpeg',
+        alt: 'MediOps prediction dashboard',
+        title: 'Predictive Analytics',
+        description:
+          'Machine-learning outputs for length-of-stay and ER wait predictions with confidence-aware operational context.',
+      },
+      {
+        src: '/projects/mediops/anomalies.jpeg',
+        alt: 'MediOps anomaly detection dashboard',
+        title: 'Anomaly Monitoring',
+        description:
+          'Unresolved operational anomalies grouped by severity, source, and response status for faster escalation.',
+      },
+      {
+        src: '/projects/mediops/shift 1.jpeg',
+        alt: 'MediOps shift analytics dashboard one',
+        title: 'Shift Analytics I',
+        description:
+          'Shift-level clustering and staffing patterns that reveal how operational load changes across hospitals.',
+      },
+      {
+        src: '/projects/mediops/shift 2.jpeg',
+        alt: 'MediOps shift analytics dashboard two',
+        title: 'Shift Analytics II',
+        description:
+          'Additional shift intelligence for comparing staffing efficiency, care load, and hospital operating patterns.',
+      },
+    ],
     tagline: 'Real-Time Hospital Operations Analytics',
     tags: ['FastAPI', 'React', 'PostgreSQL', 'Celery', 'Redis', 'WebSockets', 'scikit-learn'],
     category: 'Healthcare Analytics - Operations Intelligence',
