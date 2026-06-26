@@ -45,6 +45,22 @@ const formatEmailJsError = (error) =>
     `name=${error?.name || 'none'}`,
   ].join(' | ')
 
+const buildMailtoLink = ({ name, email, company, reason, message }) => {
+  const subject = `Portfolio contact: ${reason}`
+  const body = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    company && `Company / Organization: ${company}`,
+    `Reason: ${reason}`,
+    '',
+    message,
+  ]
+    .filter(Boolean)
+    .join('\n')
+
+  return `mailto:chiajunyang1610@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
 export default function Contact() {
   const formRef = useRef(null)
   const [formState, setFormState] = useState('idle')
@@ -65,6 +81,7 @@ export default function Contact() {
     const form = new FormData(formElement)
     const name = form.get('from_name')?.toString().trim()
     const email = form.get('from_email')?.toString().trim()
+    const company = form.get('company')?.toString().trim()
     const reason = form.get('reason')?.toString().trim()
     const message = form.get('message')?.toString().trim()
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -102,11 +119,14 @@ export default function Contact() {
     const emailJsConfigStatus = getEmailJsConfigStatus()
 
     if (!emailJsConfigStatus.configured) {
-      console.error(
-        `EmailJS is missing required Vite environment variables: ${formatEmailJsConfigStatus(emailJsConfigStatus)}`,
-      )
-      setFormState('error')
-      setFeedback('Email service is not configured yet. Please email me directly.')
+      if (import.meta.env.DEV) {
+        console.info(
+          `EmailJS is missing required Vite environment variables, using mailto fallback: ${formatEmailJsConfigStatus(emailJsConfigStatus)}`,
+        )
+      }
+      window.location.href = buildMailtoLink({ name, email, company, reason, message })
+      setFormState('success')
+      setFeedback('Your email app should open with the message ready to send.')
       return
     }
 
