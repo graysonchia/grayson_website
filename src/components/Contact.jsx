@@ -1,18 +1,92 @@
-import { useState } from 'react'
-import { BriefcaseBusiness, Code2, Mail, Send } from 'lucide-react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
+import { BriefcaseBusiness, ChevronDown, Code2, Mail, Send } from 'lucide-react'
+
+const reasonOptions = [
+  'Internship opportunity',
+  'Entry-level role',
+  'Freelance / project collaboration',
+  'Networking',
+  'Other',
+]
 
 export default function Contact() {
-  const [sent, setSent] = useState(false)
+  const formRef = useRef(null)
+  const [formState, setFormState] = useState('idle')
+  const [feedback, setFeedback] = useState('')
+  const [reason, setReason] = useState('')
+  const [reasonOpen, setReasonOpen] = useState(false)
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.get('name')}`)
-    const body = encodeURIComponent(`${form.get('message')}\n\nFrom: ${form.get('name')} <${form.get('email')}>`)
-    window.location.href = `mailto:chiajunyang1610@gmail.com?subject=${subject}&body=${body}`
-    setSent(true)
-    event.currentTarget.reset()
+    const name = form.get('from_name')?.toString().trim()
+    const email = form.get('from_email')?.toString().trim()
+    const reason = form.get('reason')?.toString().trim()
+    const message = form.get('message')?.toString().trim()
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!name) {
+      setFormState('error')
+      setFeedback('Please enter your name.')
+      return
+    }
+
+    if (!email) {
+      setFormState('error')
+      setFeedback('Please enter your email address.')
+      return
+    }
+
+    if (!emailPattern.test(email)) {
+      setFormState('error')
+      setFeedback('Please enter a valid email address.')
+      return
+    }
+
+    if (!reason) {
+      setFormState('error')
+      setFeedback('Please choose a reason for contact.')
+      return
+    }
+
+    if (!message) {
+      setFormState('error')
+      setFeedback('Please enter a message.')
+      return
+    }
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      setFormState('error')
+      setFeedback('Sorry, something went wrong. Please try again or email me directly.')
+      return
+    }
+
+    setFormState('loading')
+    setFeedback('')
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey })
+      setFormState('success')
+      setFeedback('Thanks! Your message has been sent successfully.')
+      event.currentTarget.reset()
+      setReason('')
+    } catch {
+      setFormState('error')
+      setFeedback('Sorry, something went wrong. Please try again or email me directly.')
+    }
   }
+
+  const buttonText = {
+    idle: 'Send Message',
+    loading: 'Sending...',
+    success: 'Message Sent',
+    error: 'Send Message',
+  }[formState]
 
   return (
     <section id="contact" className="bg-surface/35 py-24">
@@ -54,23 +128,111 @@ export default function Contact() {
           </div>
         </div>
 
-        <form onSubmit={submit} className="card grid gap-4 p-6">
+        <form ref={formRef} onSubmit={submit} className="card grid gap-4 p-6">
+          <p className="text-xl font-bold leading-8 text-text">
+            Have an internship opportunity, project idea, or role that fits my skills? Send me a message and I&apos;ll
+            get back to you soon.
+          </p>
           <label className="grid gap-2 font-semibold">
-            Name
-            <input required name="name" className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none" />
+            Name *
+            <input
+              name="from_name"
+              className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
+            />
           </label>
           <label className="grid gap-2 font-semibold">
-            Email
-            <input required type="email" name="email" className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none" />
+            Email *
+            <input
+              type="email"
+              name="from_email"
+              className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
+            />
           </label>
           <label className="grid gap-2 font-semibold">
-            Message
-            <textarea required name="message" rows="6" className="focus-ring resize-none rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none" />
+            Company / Organization
+            <input
+              name="company"
+              className="focus-ring rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
+            />
           </label>
-          <button type="submit" className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white hover:bg-accent-glow">
-            <Send size={18} /> Send Message
+          <label className="grid gap-2 font-semibold">
+            Reason for Contact *
+            <input type="hidden" name="reason" value={reason} />
+            <div
+              className="relative"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setReasonOpen(false)
+                }
+              }}
+            >
+              <button
+                type="button"
+                aria-expanded={reasonOpen}
+                aria-haspopup="listbox"
+                className="focus-ring flex w-full items-center justify-between gap-3 rounded-lg border border-border bg-bg px-4 py-3 text-left text-text outline-none"
+                onClick={() => setReasonOpen((isOpen) => !isOpen)}
+              >
+                <span>{reason || 'Select one'}</span>
+                <ChevronDown size={18} className={`shrink-0 text-muted transition ${reasonOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {reasonOpen && (
+                <div
+                  role="listbox"
+                  className="mt-2 w-full overflow-hidden rounded-lg border border-border bg-bg shadow-2xl"
+                >
+                  {reasonOptions.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      role="option"
+                      aria-selected={reason === option}
+                      className="focus-ring block w-full px-4 py-3 text-left font-semibold text-text hover:bg-surface-2"
+                      onClick={() => {
+                        setReason(option)
+                        setReasonOpen(false)
+                      }}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </label>
+          <label className="grid gap-2 font-semibold">
+            Message *
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Tell me about the opportunity, project, or reason you'd like to connect."
+              className="focus-ring resize-none rounded-lg border border-border bg-bg px-4 py-3 text-text outline-none placeholder:text-muted/70"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={formState === 'loading'}
+            className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-bold text-white transition hover:bg-accent-glow disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            <Send size={18} /> {buttonText}
           </button>
-          {sent && <p className="font-semibold text-green">Thanks! I&apos;ll get back to you within 24-48 hours.</p>}
+          {feedback && (
+            <p
+              className={`rounded-lg border px-4 py-3 text-sm font-semibold ${
+                formState === 'success'
+                  ? 'border-green/40 bg-green/10 text-green'
+                  : 'border-accent/40 bg-accent/10 text-accent-glow'
+              }`}
+            >
+              {feedback}
+            </p>
+          )}
+          <p className="text-sm text-muted">
+            Prefer email? Reach me directly at{' '}
+            <a href="mailto:chiajunyang1610@gmail.com" className="focus-ring rounded-sm font-semibold text-accent-glow hover:text-text">
+              chiajunyang1610@gmail.com
+            </a>
+          </p>
         </form>
       </div>
     </section>
