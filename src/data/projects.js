@@ -502,34 +502,60 @@ export const projects = [
     title: 'FXPulse MY',
     domain: 'Finance',
     emoji: 'FX',
-    image: '',
+    image: '/projects/fxpulse/xgboost.jpeg',
     imageAlt: 'FXPulse MY foreign exchange analytics dashboard preview',
-    tagline: 'Malaysia Foreign Exchange Analytics',
-    tags: ['Python', 'Finance Analytics', 'Time Series', 'Dashboard', 'Forecasting'],
-    category: 'Finance Analytics - Foreign Exchange',
+    gallery: [
+      {
+        src: '/projects/fxpulse/xgboost.jpeg',
+        alt: 'FXPulse MY XGBoost foreign exchange forecasting dashboard',
+        title: 'XGBoost Forecasting',
+        description:
+          'Gradient-boosted forecast view for comparing predicted exchange-rate movement, model error, and market signal behaviour.',
+      },
+      {
+        src: '/projects/fxpulse/lstm.jpeg',
+        alt: 'FXPulse MY LSTM foreign exchange forecasting dashboard',
+        title: 'LSTM Forecasting',
+        description:
+          'Sequence-model forecast dashboard for reviewing currency trend patterns and short-horizon exchange-rate predictions.',
+      },
+      {
+        src: '/projects/fxpulse/arima.jpeg',
+        alt: 'FXPulse MY ARIMA foreign exchange forecasting dashboard',
+        title: 'ARIMA Forecasting',
+        description:
+          'Classical time-series forecast view for benchmarking exchange-rate trends against statistical model outputs.',
+      },
+    ],
+    tagline: 'Malaysia Foreign Exchange Forecasting',
+    tags: ['Python', 'Finance Analytics', 'Time Series', 'ARIMA', 'LSTM', 'XGBoost'],
+    category: 'Finance Analytics - FX Forecasting',
     summary:
-      'A foreign exchange analytics project for monitoring currency movement, trend patterns, and financial market signals relevant to Malaysia.',
+      'A foreign exchange analytics project for forecasting currency movement with ARIMA, LSTM, and XGBoost model views tailored to Malaysia-focused market analysis.',
     problem:
-      'Currency movement affects businesses, travellers, and financial planning, but exchange-rate data needs clear visualisation before trends become actionable.',
+      'Currency movement affects businesses, travellers, and financial planning, but exchange-rate data needs model-backed forecasts and clear visual comparison before trends become actionable.',
     dataset:
-      'Foreign exchange time-series data prepared for trend analysis, comparison, and dashboard reporting.',
-    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+      'Foreign exchange time-series data prepared for trend analysis, feature engineering, model comparison, and forecast reporting.',
+    tools: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'XGBoost', 'TensorFlow/Keras', 'statsmodels'],
     methodology: [
-      'Collected and prepared currency-rate records for analysis',
-      'Compared exchange-rate movement over time',
-      'Built visual indicators for trend direction and volatility',
-      'Summarised financial signals in a dashboard-oriented format',
+      'Collected and prepared exchange-rate records for time-series modelling',
+      'Engineered lag, rolling-window, and trend features for supervised forecasts',
+      'Built ARIMA baseline forecasts for classical time-series comparison',
+      'Trained LSTM sequence models to capture non-linear temporal patterns',
+      'Applied XGBoost regression for feature-driven exchange-rate prediction',
+      'Presented model outputs through dashboard views for side-by-side review',
     ],
     insights: [
-      'Shows how exchange-rate movement changes across time windows',
-      'Supports clearer comparison of currency volatility',
-      'Connects financial data preparation with practical reporting',
+      'Compares statistical, deep-learning, and boosted-tree forecast approaches',
+      'Highlights exchange-rate direction, volatility, and short-horizon model behaviour',
+      'Makes model performance easier to inspect through separate forecast dashboards',
+      'Connects financial data preparation with practical market reporting',
     ],
     outcome:
-      'A finance analytics project demonstrating time-series preparation, visual analysis, and market-focused reporting.',
-    skills: ['Time-series analysis', 'Financial analytics', 'Visualization', 'Trend analysis'],
+      'A finance analytics project demonstrating time-series preparation, multi-model forecasting, visual analysis, and market-focused reporting.',
+    skills: ['Time-series forecasting', 'Financial analytics', 'Model comparison', 'Feature engineering', 'Visualization'],
     learned:
-      'This project helped me practise turning changing financial data into concise indicators and visual summaries.',
+      'This project helped me practise comparing model families and turning changing financial data into concise forecast views users can inspect quickly.',
     github: 'https://github.com/graysonchia/FXPulse-MY',
     demo: '',
   },
