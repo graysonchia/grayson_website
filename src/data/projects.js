@@ -556,32 +556,64 @@ export const projects = [
     title: 'ThreatLens',
     domain: 'Security & Risk',
     emoji: 'TL',
-    image: '',
+    image: '/projects/threatlens/dashboard.jpeg',
     imageAlt: 'ThreatLens cybersecurity analytics dashboard preview',
+    gallery: [
+      {
+        src: '/projects/threatlens/dashboard.jpeg',
+        alt: 'ThreatLens cybersecurity operations dashboard',
+        title: 'Security Overview',
+        description:
+          'Cybersecurity command view with incident volume, risk distribution, detection coverage, and high-level threat indicators.',
+      },
+      {
+        src: '/projects/threatlens/events.jpeg',
+        alt: 'ThreatLens security events dashboard',
+        title: 'Event Analysis',
+        description:
+          'Security event records grouped by activity type, severity, source, and timeline for faster investigation.',
+      },
+      {
+        src: '/projects/threatlens/threat.jpeg',
+        alt: 'ThreatLens threat intelligence dashboard',
+        title: 'Threat Intelligence',
+        description:
+          'Threat pattern review with suspicious indicators, attack categories, and risk signals for analyst prioritisation.',
+      },
+      {
+        src: '/projects/threatlens/alerts.jpeg',
+        alt: 'ThreatLens alert monitoring dashboard',
+        title: 'Alert Monitoring',
+        description:
+          'Prioritised alert queue that highlights unresolved findings, severity, response status, and escalation context.',
+      },
+    ],
     tagline: 'Cybersecurity Threat Analytics',
-    tags: ['Python', 'Cybersecurity', 'Anomaly Detection', 'Risk Analytics', 'Dashboard'],
+    tags: ['Python', 'FastAPI', 'React', 'Cybersecurity', 'Anomaly Detection', 'Risk Analytics'],
     category: 'Security Analytics - Threat Detection',
     summary:
-      'A cybersecurity analytics project focused on identifying suspicious patterns, risk signals, and threat indicators from security-related data.',
+      'A cybersecurity analytics dashboard for reviewing security events, detecting suspicious patterns, prioritising alerts, and presenting threat indicators for operational risk review.',
     problem:
-      'Security events can be noisy and difficult to prioritise without analytics that highlight suspicious activity and risk patterns.',
+      'Security event streams can be noisy and difficult to prioritise when analysts do not have clear risk scoring, alert summaries, or visual threat context.',
     dataset:
-      'Security-style event data prepared for risk scoring, anomaly review, and visual threat reporting.',
-    tools: ['Python', 'pandas', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+      'Synthetic security operations data covering event records, alert severity, source activity, threat categories, risk scores, and response status.',
+    tools: ['Python', 'pandas', 'scikit-learn', 'FastAPI', 'React', 'Recharts'],
     methodology: [
-      'Prepared security event records for analysis',
-      'Explored suspicious activity patterns and risk indicators',
-      'Applied anomaly-oriented analysis to identify unusual behaviour',
-      'Presented findings through visual summaries',
+      'Prepared security event records for risk scoring and suspicious activity review',
+      'Grouped alerts by severity, source, category, and response status',
+      'Applied anomaly-oriented analysis to flag unusual behaviour and threat indicators',
+      'Built dashboard views for event analysis, threat intelligence, and alert monitoring',
+      'Presented findings through visual summaries designed for analyst triage',
     ],
     insights: [
-      'Highlights unusual activity patterns in event data',
-      'Supports risk-based review of security records',
-      'Connects analytics methods with cybersecurity decision-making',
+      'Highlights unusual activity patterns across security event data',
+      'Prioritises unresolved alerts by severity and operational risk',
+      'Connects threat categories with source activity and detection signals',
+      'Turns noisy security records into a clearer analyst review workflow',
     ],
     outcome:
-      'A cybersecurity analytics project demonstrating how data analysis can support threat monitoring and risk review.',
-    skills: ['Security analytics', 'Anomaly detection', 'Risk indicators', 'Visualization'],
+      'A portfolio-ready cybersecurity analytics system demonstrating event preparation, anomaly detection, threat reporting, and alert triage dashboards.',
+    skills: ['Security analytics', 'Anomaly detection', 'Risk scoring', 'Alert triage', 'Dashboard design'],
     learned:
       'This project helped me think about analytics from an operational risk and prioritisation perspective.',
     github: 'https://github.com/graysonchia/ThreatLens',
