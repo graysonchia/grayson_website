@@ -592,34 +592,73 @@ export const projects = [
     title: 'UrbanPulse',
     domain: 'Transportation',
     emoji: 'UP',
-    image: '',
-    imageAlt: 'UrbanPulse urban analytics dashboard preview',
-    tagline: 'Urban Data & City Insights',
-    tags: ['Python', 'Urban Analytics', 'Data Visualization', 'Dashboard', 'EDA'],
-    category: 'Urban Analytics - City Insights',
+    image: '/projects/urbanpulse/dashboard.jpeg',
+    imageAlt: 'UrbanPulse smart city operations dashboard preview',
+    gallery: [
+      {
+        src: '/projects/urbanpulse/dashboard.jpeg',
+        alt: 'UrbanPulse smart city overview dashboard',
+        title: 'City Overview',
+        description:
+          'Smart-city command dashboard with sensor health, environmental readings, forecast indicators, and active alerts.',
+      },
+      {
+        src: '/projects/urbanpulse/sensors.jpeg',
+        alt: 'UrbanPulse sensor network dashboard',
+        title: 'Sensor Network',
+        description:
+          'Sensor inventory, device status, location coverage, and connectivity metrics for urban monitoring operations.',
+      },
+      {
+        src: '/projects/urbanpulse/readings.jpeg',
+        alt: 'UrbanPulse environmental readings dashboard',
+        title: 'Live Readings',
+        description:
+          'Environmental and mobility readings tracked across sensor nodes with signal trends and operational context.',
+      },
+      {
+        src: '/projects/urbanpulse/forecast.jpeg',
+        alt: 'UrbanPulse forecast dashboard',
+        title: 'Forecast Analytics',
+        description:
+          'Forecast view for expected city conditions, demand signals, and planning-oriented urban indicators.',
+      },
+      {
+        src: '/projects/urbanpulse/alerts.jpeg',
+        alt: 'UrbanPulse urban alerts dashboard',
+        title: 'Alert Monitoring',
+        description:
+          'Prioritised city alerts grouped by severity, source, location, and response status for faster operational review.',
+      },
+    ],
+    tagline: 'Smart City Sensor Analytics Platform',
+    tags: ['FastAPI', 'React', 'PostgreSQL', 'IoT Analytics', 'Forecasting', 'Anomaly Detection'],
+    category: 'Urban Analytics - Smart City Intelligence',
     summary:
-      'An urban analytics project that explores city-level patterns and turns public data into clearer location-based insight.',
+      'A smart-city analytics platform that monitors urban sensors, tracks environmental readings, forecasts city conditions, and surfaces alerts for operations teams.',
     problem:
-      'Urban data is often spread across different indicators, making it hard to understand city patterns without structured analysis and visualisation.',
+      'City operations teams need a practical way to monitor distributed sensor networks, identify unusual readings, and understand changing urban conditions before small issues become service problems.',
     dataset:
-      'Urban and city-related data prepared for exploratory analysis, comparison, and dashboard-style reporting.',
-    tools: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+      'Synthetic smart-city telemetry covering sensor nodes, environmental readings, location metadata, forecast records, and operational alerts.',
+    tools: ['FastAPI', 'React', 'PostgreSQL', 'pandas', 'scikit-learn', 'Recharts'],
     methodology: [
-      'Prepared urban data for analysis',
-      'Compared indicators across locations or time periods',
-      'Built visual summaries for city-level patterns',
-      'Presented findings as portfolio-ready insights',
+      'Modelled sensor assets, telemetry readings, forecast records, and alert events',
+      'Built dashboard views for city overview, sensors, readings, forecasts, and alerts',
+      'Prepared time-series features for trend monitoring and short-horizon forecasting',
+      'Applied anomaly-oriented logic to flag unusual sensor readings and operational alerts',
+      'Designed visual summaries that help compare city conditions across locations and time periods',
     ],
     insights: [
-      'Surfaces patterns across urban indicators',
-      'Supports clearer comparison between city data points',
-      'Shows how analytics can improve public-data interpretation',
+      'Tracks sensor health and coverage across the simulated city network',
+      'Highlights abnormal readings and unresolved alerts for operational follow-up',
+      'Connects forecast signals with live city telemetry for planning context',
+      'Makes location-based urban indicators easier to compare at a glance',
     ],
     outcome:
-      'A civic-style analytics project demonstrating data cleaning, exploratory analysis, and insight presentation.',
-    skills: ['Urban analytics', 'EDA', 'Visualization', 'Insight communication'],
+      'A full-stack civic analytics dashboard demonstrating sensor data modelling, operational monitoring, forecasting, and smart-city insight presentation.',
+    skills: ['Urban analytics', 'Sensor telemetry', 'Forecasting', 'Anomaly detection', 'Dashboard design'],
     learned:
-      'This project reinforced the value of context when translating public datasets into useful conclusions.',
+      'This project reinforced how much context matters when turning noisy city telemetry into information that operations teams can trust and act on.',
     github: 'https://github.com/graysonchia/UrbanPulse',
     demo: '',
   },
